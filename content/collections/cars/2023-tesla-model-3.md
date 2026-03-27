@@ -17,5 +17,5 @@ mileage: 15300
 color: 'Midnight Silver'
 doors: 4
 highlighted: true
-status: available
+availability: available
 ---

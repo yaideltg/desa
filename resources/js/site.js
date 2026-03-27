@@ -117,6 +117,75 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+// Car filters
+document.addEventListener('DOMContentLoaded', () => {
+    const grid = document.getElementById('cars-grid');
+    if (!grid) return;
+
+    const filters = {
+        'body-type': document.getElementById('filter-body-type'),
+        'transmission': document.getElementById('filter-transmission'),
+        'fuel-type': document.getElementById('filter-fuel-type'),
+        'status': document.getElementById('filter-status'),
+    };
+    const clearBtn = document.getElementById('filter-clear');
+    const countEl = document.getElementById('car-count-number');
+    const noResultsEl = document.getElementById('filter-no-results');
+    const items = grid.querySelectorAll('.car-filter-item');
+
+    function applyFilters() {
+        const activeFilters = {};
+        let hasActive = false;
+
+        Object.entries(filters).forEach(([key, select]) => {
+            const val = select.value;
+            activeFilters[key] = val;
+            if (val) {
+                hasActive = true;
+                select.classList.add('active');
+            } else {
+                select.classList.remove('active');
+            }
+        });
+
+        let visible = 0;
+        items.forEach(item => {
+            const matches =
+                (!activeFilters['body-type'] || item.dataset.bodyType === activeFilters['body-type']) &&
+                (!activeFilters['transmission'] || item.dataset.transmission === activeFilters['transmission']) &&
+                (!activeFilters['fuel-type'] || item.dataset.fuelType === activeFilters['fuel-type']) &&
+                (!activeFilters['status'] || item.dataset.status === activeFilters['status']);
+
+            if (matches) {
+                item.classList.remove('filter-hidden');
+                visible++;
+            } else {
+                item.classList.add('filter-hidden');
+            }
+        });
+
+        if (countEl) countEl.textContent = visible;
+        if (noResultsEl) {
+            noResultsEl.classList.toggle('hidden', visible > 0);
+            grid.classList.toggle('hidden', visible === 0);
+        }
+
+        clearBtn.classList.toggle('hidden', !hasActive);
+    }
+
+    Object.values(filters).forEach(select => {
+        select.addEventListener('change', applyFilters);
+    });
+
+    clearBtn.addEventListener('click', () => {
+        Object.values(filters).forEach(select => {
+            select.value = '';
+            select.classList.remove('active');
+        });
+        applyFilters();
+    });
+});
+
 // Number formatting for prices
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('[data-price]').forEach(el => {

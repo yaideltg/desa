@@ -16,5 +16,5 @@ mileage: 3200
 color: 'Sarge Green'
 doors: 4
 highlighted: false
-status: available
+availability: available
 ---

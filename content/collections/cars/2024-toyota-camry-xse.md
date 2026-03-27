@@ -17,7 +17,7 @@ mileage: 12400
 color: 'Pearl White'
 doors: 4
 highlighted: true
-status: available
+availability: available
 hero_image: car3.jpg
 gallery:
   - car1.jpg
@@ -25,5 +25,5 @@ gallery:
   - car3.jpg
   - car4.jpg
 updated_by: acffaab0-a0ef-4dde-97c0-b5ee06d7afed
-updated_at: 1774643768
+updated_at: 1774644876
 ---

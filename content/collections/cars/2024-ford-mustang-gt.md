@@ -16,5 +16,5 @@ mileage: 5600
 color: 'Grabber Blue'
 doors: 2
 highlighted: true
-status: available
+availability: available
 ---

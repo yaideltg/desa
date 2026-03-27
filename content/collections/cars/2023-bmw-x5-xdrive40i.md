@@ -17,5 +17,5 @@ mileage: 22100
 color: 'Alpine White'
 doors: 4
 highlighted: true
-status: available
+availability: available
 ---

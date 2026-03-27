@@ -17,5 +17,5 @@ mileage: 18200
 color: 'Rallye Red'
 doors: 4
 highlighted: true
-status: available
+availability: available
 ---

@@ -22,9 +22,9 @@
         {{ /if }}
 
         {{# Status badge #}}
-        {{ if status == "reserved" }}
+        {{ if availability == "reserved" }}
             <div class="absolute top-4 right-4 px-3 py-1 status-reserved text-xs font-bold rounded-full">Reserved</div>
-        {{ elseif status == "sold" }}
+        {{ elseif availability == "sold" }}
             <div class="absolute top-4 right-4 px-3 py-1 status-sold text-xs font-bold rounded-full">Sold</div>
         {{ /if }}
 

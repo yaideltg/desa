@@ -14,14 +14,75 @@
     </div>
 </section>
 
+{{# ===== FILTER BAR ===== #}}
+<section class="bg-white border-b border-surface-200 sticky top-[64px] z-30" id="car-filters">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+        <div class="flex flex-wrap items-center gap-3">
+            {{# Body Type #}}
+            <div class="filter-group">
+                <select id="filter-body-type" class="filter-select" aria-label="Filter by body type">
+                    <option value="">All Body Types</option>
+                    <option value="sedan">Sedan</option>
+                    <option value="suv">SUV</option>
+                    <option value="coupe">Coupe</option>
+                    <option value="truck">Truck</option>
+                    <option value="van">Van</option>
+                    <option value="hatchback">Hatchback</option>
+                    <option value="convertible">Convertible</option>
+                    <option value="wagon">Wagon</option>
+                </select>
+            </div>
+
+            {{# Transmission #}}
+            <div class="filter-group">
+                <select id="filter-transmission" class="filter-select" aria-label="Filter by transmission">
+                    <option value="">All Transmissions</option>
+                    <option value="automatic">Automatic</option>
+                    <option value="manual">Manual</option>
+                    <option value="cvt">CVT</option>
+                </select>
+            </div>
+
+            {{# Fuel Type #}}
+            <div class="filter-group">
+                <select id="filter-fuel-type" class="filter-select" aria-label="Filter by fuel type">
+                    <option value="">All Fuel Types</option>
+                    <option value="gasoline">Gasoline</option>
+                    <option value="diesel">Diesel</option>
+                    <option value="electric">Electric</option>
+                    <option value="hybrid">Hybrid</option>
+                </select>
+            </div>
+
+            {{# Status #}}
+            <div class="filter-group">
+                <select id="filter-status" class="filter-select" aria-label="Filter by status">
+                    <option value="">All Statuses</option>
+                    <option value="available">Available</option>
+                    <option value="reserved">Reserved</option>
+                    <option value="sold">Sold</option>
+                </select>
+            </div>
+
+            {{# Clear button #}}
+            <button id="filter-clear" class="filter-clear hidden" type="button">
+                <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+                Clear filters
+            </button>
+        </div>
+    </div>
+</section>
+
 {{# ===== CARS GRID ===== #}}
 <section class="py-16 sm:py-20 bg-surface-50 grid-pattern">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {{# Results count #}}
         <div class="flex items-center justify-between mb-8">
-            <p class="text-sm text-surface-500">
-                <span class="font-semibold text-surface-700">{{ collection:count from="cars" }}</span> vehicles available
+            <p class="text-sm text-surface-500" id="car-count">
+                <span class="font-semibold text-surface-700" id="car-count-number">{{ collection:count from="cars" }}</span> vehicles available
             </p>
         </div>
 
@@ -29,7 +90,7 @@
         {{ collection:cars sort="highlighted:desc|title" as="cars" }}
             {{ if no_results }}
                 {{# Empty state #}}
-                <div class="text-center py-20">
+                <div class="text-center py-20" id="cars-empty-state">
                     <svg class="w-16 h-16 text-surface-300 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 0 0-3.213-9.193 2.056 2.056 0 0 0-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 0 0-10.026 0 1.106 1.106 0 0 0-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12" />
                     </svg>
@@ -37,10 +98,25 @@
                     <p class="mt-2 text-sm text-surface-400">Check back soon for new arrivals!</p>
                 </div>
             {{ else }}
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8" id="cars-grid">
                     {{ cars }}
-                        {{ partial:partials/car-card }}
+                        <div class="car-filter-item"
+                             data-body-type="{{ body_type }}"
+                             data-transmission="{{ transmission }}"
+                             data-fuel-type="{{ fuel_type }}"
+                             data-status="{{ availability }}">
+                            {{ partial:partials/car-card }}
+                        </div>
                     {{ /cars }}
+                </div>
+
+                {{# Filter empty state - hidden by default #}}
+                <div class="text-center py-20 hidden" id="filter-no-results">
+                    <svg class="w-16 h-16 text-surface-300 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 0 1-.659 1.591l-5.432 5.432a2.25 2.25 0 0 0-.659 1.591v2.927a2.25 2.25 0 0 1-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 0 0-.659-1.591L3.659 7.409A2.25 2.25 0 0 1 3 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0 1 12 3Z" />
+                    </svg>
+                    <h3 class="text-lg font-semibold text-surface-600">No cars match your filters</h3>
+                    <p class="mt-2 text-sm text-surface-400">Try adjusting or clearing your filters to see more results.</p>
                 </div>
             {{ /if }}
         {{ /collection:cars }}

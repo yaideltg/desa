@@ -16,5 +16,5 @@ mileage: 7800
 color: 'Torch Red'
 doors: 2
 highlighted: true
-status: available
+availability: available
 ---
