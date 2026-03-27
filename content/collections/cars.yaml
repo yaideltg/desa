@@ -1,0 +1,8 @@
+title: Cars
+route: '/cars/{slug}'
+template: cars/show
+layout: layout
+sort_dir: desc
+date_behavior:
+  past: public
+  future: private

@@ -1,3 +1,7 @@
 tree:
   -
     entry: home
+  -
+    entry: page-cars
+  -
+    entry: page-blog

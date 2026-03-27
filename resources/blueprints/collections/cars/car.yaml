@@ -1,0 +1,198 @@
+title: Car
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        display: General
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              display: Title
+              required: true
+              validate:
+                - required
+          -
+            handle: slug
+            field:
+              type: slug
+              display: Slug
+              required: true
+              validate:
+                - required
+          -
+            handle: description
+            field:
+              type: textarea
+              display: Description
+              character_limit: 500
+          -
+            handle: content
+            field:
+              type: bard
+              display: 'Detailed Description'
+              buttons:
+                - h2
+                - h3
+                - bold
+                - italic
+                - unorderedlist
+                - orderedlist
+                - quote
+                - link
+              container: assets
+              allow_source: true
+      -
+        display: Media
+        fields:
+          -
+            handle: hero_image
+            field:
+              type: assets
+              display: 'Main Image'
+              container: assets
+              max_files: 1
+              instructions: 'The primary image shown in listings and at the top of the detail page.'
+          -
+            handle: gallery
+            field:
+              type: assets
+              display: Gallery
+              container: assets
+              instructions: 'Additional images of the vehicle.'
+      -
+        display: Pricing
+        fields:
+          -
+            handle: price
+            field:
+              type: float
+              display: Price
+              instructions: 'Regular price in dollars.'
+              validate:
+                - required
+          -
+            handle: on_sale
+            field:
+              type: toggle
+              display: 'On Sale'
+              instructions: 'Toggle this on if the car is on sale.'
+              default: false
+          -
+            handle: sale_price
+            field:
+              type: float
+              display: 'Sale Price'
+              instructions: 'Discounted price. Only shown when On Sale is enabled.'
+              if:
+                on_sale: 'equals true'
+  details:
+    display: Details
+    sections:
+      -
+        display: Specifications
+        fields:
+          -
+            handle: brand
+            field:
+              type: text
+              display: Brand
+              validate:
+                - required
+          -
+            handle: model
+            field:
+              type: text
+              display: Model
+          -
+            handle: year
+            field:
+              type: integer
+              display: Year
+              validate:
+                - required
+          -
+            handle: body_type
+            field:
+              type: select
+              display: 'Body Type'
+              options:
+                sedan: Sedan
+                suv: SUV
+                coupe: Coupe
+                truck: Truck
+                van: Van
+                hatchback: Hatchback
+                convertible: Convertible
+                wagon: Wagon
+          -
+            handle: transmission
+            field:
+              type: select
+              display: Transmission
+              options:
+                automatic: Automatic
+                manual: Manual
+                cvt: CVT
+          -
+            handle: fuel_type
+            field:
+              type: select
+              display: 'Fuel Type'
+              options:
+                gasoline: Gasoline
+                diesel: Diesel
+                electric: Electric
+                hybrid: Hybrid
+          -
+            handle: engine_displacement
+            field:
+              type: text
+              display: 'Engine Displacement'
+              instructions: 'Engine size, e.g. 2.0L, 3500cc'
+          -
+            handle: horsepower
+            field:
+              type: integer
+              display: Horsepower
+          -
+            handle: mileage
+            field:
+              type: integer
+              display: 'Mileage (km)'
+          -
+            handle: color
+            field:
+              type: text
+              display: Color
+          -
+            handle: doors
+            field:
+              type: integer
+              display: Doors
+              default: 4
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        display: Visibility
+        fields:
+          -
+            handle: highlighted
+            field:
+              type: toggle
+              display: Highlighted
+              instructions: 'Show this car in the featured section on the home page.'
+              default: false
+          -
+            handle: status
+            field:
+              type: select
+              display: 'Availability'
+              options:
+                available: Available
+                reserved: Reserved
+                sold: Sold
+              default: available

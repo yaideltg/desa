@@ -1,0 +1,45 @@
+{{# Post card partial - used in blog listing and homepage #}}
+<article class="group bg-white rounded-3xl overflow-hidden border border-surface-200 hover:border-brand-200 shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg">
+    {{# Featured image #}}
+    <div class="relative aspect-[16/10] overflow-hidden bg-surface-100">
+        {{ if featured_image }}
+            {{ featured_image }}
+                <img src="{{ url }}" alt="{{ alt ?? title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+            {{ /featured_image }}
+        {{ else }}
+            <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-brand-50 to-brand-100">
+                <svg class="w-12 h-12 text-brand-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 0 1-2.25 2.25M16.5 7.5V18a2.25 2.25 0 0 0 2.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 0 0 2.25 2.25h13.5M6 7.5h3v3H6v-3Z" />
+                </svg>
+            </div>
+        {{ /if }}
+    </div>
+
+    {{# Content #}}
+    <div class="p-5 sm:p-6">
+        {{# Date #}}
+        <time class="text-xs font-medium text-surface-400 uppercase tracking-wider" datetime="{{ date format="Y-m-d" }}">
+            {{ date format="M d, Y" }}
+        </time>
+
+        {{# Title #}}
+        <h3 class="mt-2 text-lg font-bold text-surface-900 group-hover:text-brand-600 transition-colors leading-snug">
+            <a href="{{ url }}" class="after:absolute after:inset-0">
+                {{ title }}
+            </a>
+        </h3>
+
+        {{# Excerpt #}}
+        {{ if excerpt }}
+            <p class="mt-2 text-sm text-surface-500 leading-relaxed line-clamp-2">{{ excerpt }}</p>
+        {{ /if }}
+
+        {{# Read more #}}
+        <div class="mt-4 flex items-center gap-1.5 text-sm font-semibold text-brand-600 group-hover:text-brand-700">
+            Read more
+            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+            </svg>
+        </div>
+    </div>
+</article>
