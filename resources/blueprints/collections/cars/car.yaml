@@ -88,9 +88,29 @@ tabs:
               instructions: 'Discounted price. Only shown when On Sale is enabled.'
               if:
                 on_sale: 'equals true'
-  details:
-    display: Details
+  sidebar:
+    display: Sidebar
     sections:
+      -
+        display: Visibility
+        fields:
+          -
+            handle: highlighted
+            field:
+              type: toggle
+              display: Highlighted
+              instructions: 'Show this car in the featured section on the home page.'
+              default: false
+          -
+            handle: availability
+            field:
+              type: select
+              display: 'Availability'
+              options:
+                available: Available
+                reserved: Reserved
+                sold: Sold
+              default: available
       -
         display: Specifications
         fields:
@@ -173,26 +193,4 @@ tabs:
               type: integer
               display: Doors
               default: 4
-  sidebar:
-    display: Sidebar
-    sections:
-      -
-        display: Visibility
-        fields:
-          -
-            handle: highlighted
-            field:
-              type: toggle
-              display: Highlighted
-              instructions: 'Show this car in the featured section on the home page.'
-              default: false
-          -
-            handle: availability
-            field:
-              type: select
-              display: 'Availability'
-              options:
-                available: Available
-                reserved: Reserved
-                sold: Sold
-              default: available
+
