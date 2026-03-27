@@ -1,5 +1,13 @@
 {{# ===== POST HERO ===== #}}
-<section class="hero-gradient pt-28 sm:pt-36 pb-10 sm:pb-14 relative">
+<section class="post-hero relative pt-28 sm:pt-36 pb-14 sm:pb-20 overflow-hidden">
+    {{# Featured image as background #}}
+    {{ if featured_image }}
+        {{ featured_image }}
+            <div class="post-hero-image" style="background-image: url('{{ url }}');"></div>
+        {{ /featured_image }}
+    {{ /if }}
+    {{# Dark overlay for readability #}}
+    <div class="post-hero-overlay"></div>
     <div class="hero-shape hero-shape-1"></div>
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {{# Breadcrumb #}}
@@ -27,12 +35,12 @@
             {{ /if }}
         </div>
 
-        <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-tight">
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-tight drop-shadow-lg">
             {{ title }}
         </h1>
 
         {{ if excerpt }}
-            <p class="mt-4 text-lg text-white/50 leading-relaxed">{{ excerpt }}</p>
+            <p class="mt-4 text-lg text-white/70 leading-relaxed drop-shadow-md">{{ excerpt }}</p>
         {{ /if }}
     </div>
 </section>
@@ -40,15 +48,6 @@
 {{# ===== POST CONTENT ===== #}}
 <article class="py-12 sm:py-16 bg-surface-50">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-
-        {{# Featured image #}}
-        {{ if featured_image }}
-            <div class="rounded-3xl overflow-hidden shadow-lg mb-10 -mt-6">
-                {{ featured_image }}
-                    <img src="{{ url }}" alt="{{ alt ?? title }}" class="w-full aspect-[2/1] object-cover">
-                {{ /featured_image }}
-            </div>
-        {{ /if }}
 
         {{# Content #}}
         <div class="post-content bg-white rounded-3xl p-6 sm:p-10 border border-surface-200 shadow-sm">

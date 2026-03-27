@@ -51,6 +51,72 @@ document.addEventListener('DOMContentLoaded', () => {
     updateHeader();
 });
 
+// Image lightbox for car detail pages
+document.addEventListener('DOMContentLoaded', () => {
+    const lightbox = document.getElementById('lightbox');
+    if (!lightbox) return;
+
+    const img = document.getElementById('lightbox-img');
+    const closeBtn = document.getElementById('lightbox-close');
+    const prevBtn = document.getElementById('lightbox-prev');
+    const nextBtn = document.getElementById('lightbox-next');
+
+    const images = Array.from(document.querySelectorAll('[data-lightbox-src]'));
+    if (images.length === 0) return;
+
+    let currentIndex = 0;
+
+    function open(index) {
+        currentIndex = index;
+        img.src = images[currentIndex].dataset.lightboxSrc;
+        img.alt = images[currentIndex].alt || '';
+        lightbox.classList.add('open');
+        lightbox.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+
+        const showNav = images.length > 1;
+        prevBtn.style.display = showNav ? '' : 'none';
+        nextBtn.style.display = showNav ? '' : 'none';
+    }
+
+    function close() {
+        lightbox.classList.remove('open');
+        lightbox.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    }
+
+    function navigate(direction) {
+        currentIndex = (currentIndex + direction + images.length) % images.length;
+        img.src = images[currentIndex].dataset.lightboxSrc;
+        img.alt = images[currentIndex].alt || '';
+    }
+
+    images.forEach((el, i) => {
+        const trigger = el.closest('[data-lightbox-trigger]') || el;
+        trigger.addEventListener('click', (e) => {
+            e.preventDefault();
+            open(i);
+        });
+    });
+
+    closeBtn.addEventListener('click', close);
+    prevBtn.addEventListener('click', () => navigate(-1));
+    nextBtn.addEventListener('click', () => navigate(1));
+
+    lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox || e.target === lightbox.querySelector('.lightbox-content')) {
+            close();
+        }
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (!lightbox.classList.contains('open')) return;
+        if (e.key === 'Escape') close();
+        if (e.key === 'ArrowLeft') navigate(-1);
+        if (e.key === 'ArrowRight') navigate(1);
+    });
+});
+
 // Number formatting for prices
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('[data-price]').forEach(el => {

@@ -8,3 +8,5 @@ preferences:
       view: tree
     posts:
       view: list
+    cars:
+      view: list
