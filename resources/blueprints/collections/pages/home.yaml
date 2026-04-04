@@ -1,0 +1,225 @@
+title: Home
+tabs:
+  hero:
+    display: Hero
+    sections:
+      -
+        display: Hero Section
+        fields:
+          -
+            handle: hero_badge
+            field:
+              type: text
+              display: Hero Badge Text
+              instructions: 'Small badge text above the headline.'
+          -
+            handle: hero_headline
+            field:
+              type: text
+              display: Headline
+              instructions: 'Main headline. The highlighted part is separate below.'
+          -
+            handle: hero_headline_highlight
+            field:
+              type: text
+              display: Headline Highlight
+              instructions: 'The gradient-colored part of the headline.'
+          -
+            handle: hero_subtitle
+            field:
+              type: textarea
+              display: Subtitle
+              instructions: 'Text below the headline.'
+          -
+            handle: hero_cta_primary
+            field:
+              type: text
+              display: Primary Button Text
+              width: 50
+          -
+            handle: hero_cta_secondary
+            field:
+              type: text
+              display: Secondary Button Text
+              width: 50
+      -
+        display: Stats
+        fields:
+          -
+            handle: stats
+            field:
+              type: grid
+              display: Stats
+              instructions: 'Statistics shown below the hero CTA buttons.'
+              fields:
+                -
+                  handle: value
+                  field:
+                    type: text
+                    display: Value
+                    width: 50
+                -
+                  handle: label
+                  field:
+                    type: text
+                    display: Label
+                    width: 50
+              add_row: Add Stat
+  features:
+    display: Features
+    sections:
+      -
+        display: 'Why Choose Us'
+        fields:
+          -
+            handle: features_headline
+            field:
+              type: text
+              display: Section Headline
+          -
+            handle: features_subtitle
+            field:
+              type: textarea
+              display: Section Subtitle
+          -
+            handle: features
+            field:
+              type: replicator
+              display: Features
+              instructions: 'Feature cards displayed in the Why Choose Us section.'
+              sets:
+                feature:
+                  display: Feature
+                  fields:
+                    -
+                      handle: icon
+                      field:
+                        type: select
+                        display: Icon
+                        options:
+                          quality: Quality / Shield Check
+                          pricing: Pricing / Money
+                          happy: Happy / Smile
+                          speed: Speed / Lightning
+                          support: Support / Headset
+                          star: Star / Rating
+                        width: 33
+                    -
+                      handle: color
+                      field:
+                        type: select
+                        display: Color Theme
+                        options:
+                          brand: Brand (Blue)
+                          accent: Accent (Orange)
+                          green: Green
+                        width: 33
+                    -
+                      handle: title
+                      field:
+                        type: text
+                        display: Title
+                        required: true
+                    -
+                      handle: description
+                      field:
+                        type: textarea
+                        display: Description
+                        required: true
+  featured:
+    display: Featured
+    sections:
+      -
+        display: 'Featured Cars Section'
+        fields:
+          -
+            handle: featured_badge
+            field:
+              type: text
+              display: Badge Text
+              instructions: 'Small label above the headline (e.g. "Featured").'
+          -
+            handle: featured_headline
+            field:
+              type: text
+              display: Headline
+          -
+            handle: featured_subtitle
+            field:
+              type: textarea
+              display: Subtitle
+          -
+            handle: featured_button_text
+            field:
+              type: text
+              display: Button Text
+              instructions: 'Text for the "View All" button below the grid.'
+  blog:
+    display: Blog
+    sections:
+      -
+        display: 'Blog Section'
+        fields:
+          -
+            handle: blog_badge
+            field:
+              type: text
+              display: Badge Text
+              instructions: 'Small label above the headline (e.g. "Latest Posts").'
+          -
+            handle: blog_headline
+            field:
+              type: text
+              display: Headline
+          -
+            handle: blog_link_text
+            field:
+              type: text
+              display: Link Text
+              instructions: 'Text for the "View All Posts" link.'
+  cta:
+    display: CTA
+    sections:
+      -
+        display: 'Call to Action Section'
+        fields:
+          -
+            handle: cta_headline
+            field:
+              type: text
+              display: CTA Headline
+          -
+            handle: cta_headline_highlight
+            field:
+              type: text
+              display: CTA Headline Highlight
+              instructions: 'The gradient-colored part of the CTA headline.'
+          -
+            handle: cta_subtitle
+            field:
+              type: textarea
+              display: CTA Subtitle
+          -
+            handle: cta_button_text
+            field:
+              type: text
+              display: CTA Button Text
+              width: 50
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        display: Meta
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              display: Title
+              required: true
+          -
+            handle: template
+            field:
+              type: template
+              display: Template
+              hide_partials: true

@@ -1,0 +1,20 @@
+phone: '+1 345 43 32 34'
+phone_link: '+13454332 34'
+email: info@desaautosell.com
+address: |-
+  123 Auto Drive
+  Miami, FL 33101
+facebook_url: '#'
+instagram_url: '#'
+twitter_url: '#'
+footer_tagline: 'Tagline of the footer where you can describe everything you need'
+services:
+  -
+    id: uoQJrqFN8L5PFLQuUclQT
+    title: 'Car dealer'
+  -
+    id: 4fdnXNpWwwgvHwv4J0WLZ
+    title: 'Car cleaning'
+  -
+    id: tB9PQZA4YPsYO59XNxQE2
+    title: 'Car repairing'

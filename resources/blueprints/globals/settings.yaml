@@ -1,0 +1,90 @@
+title: Site Settings
+tabs:
+  contact:
+    display: Contact
+    sections:
+      -
+        display: Contact Information
+        fields:
+          -
+            handle: phone
+            field:
+              type: text
+              display: Phone Number
+              instructions: 'Main contact phone number displayed across the site.'
+              width: 50
+          -
+            handle: phone_link
+            field:
+              type: text
+              display: Phone Link
+              instructions: 'Phone number for tel: links (e.g. +15551234567).'
+              width: 50
+          -
+            handle: email
+            field:
+              type: text
+              display: Email
+              input_type: email
+              instructions: 'Main contact email address.'
+              width: 50
+          -
+            handle: address
+            field:
+              type: textarea
+              display: Address
+              instructions: 'Physical address. Use a new line to separate street from city/state/zip.'
+              width: 50
+  social:
+    display: Social
+    sections:
+      -
+        display: Social Media Links
+        fields:
+          -
+            handle: facebook_url
+            field:
+              type: text
+              display: Facebook URL
+              input_type: url
+              width: 33
+          -
+            handle: instagram_url
+            field:
+              type: text
+              display: Instagram URL
+              input_type: url
+              width: 33
+          -
+            handle: twitter_url
+            field:
+              type: text
+              display: X / Twitter URL
+              input_type: url
+              width: 33
+  footer:
+    display: Footer
+    sections:
+      -
+        display: Footer Content
+        fields:
+          -
+            handle: footer_tagline
+            field:
+              type: textarea
+              display: Footer Tagline
+              instructions: 'Short description shown in the footer brand column.'
+          -
+            handle: services
+            field:
+              type: grid
+              display: Services
+              instructions: 'List of services shown in the footer.'
+              fields:
+                -
+                  handle: title
+                  field:
+                    type: text
+                    display: Service Title
+                    required: true
+              add_row: Add Service
