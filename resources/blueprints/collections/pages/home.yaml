@@ -200,6 +200,15 @@ tabs:
               type: textarea
               display: CTA Subtitle
           -
+            handle: cta_bg_image
+            field:
+              type: assets
+              display: CTA Background Image
+              instructions: 'Background image for the Call to Action section.'
+              max_files: 1
+              container: assets
+              width: 50
+          -
             handle: cta_button_text
             field:
               type: text

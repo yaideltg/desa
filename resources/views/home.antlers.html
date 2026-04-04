@@ -3,6 +3,11 @@
     <div class="hero-shape hero-shape-1"></div>
     <div class="hero-shape hero-shape-2"></div>
 
+    {{# Owner image - bleeds into background #}}
+    <div class="hero-owner">
+        <img src="/assets/mecanico.jpg" alt="" />
+    </div>
+
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 sm:py-40 relative z-10 w-full">
         <div class="max-w-3xl">
             {{# Tagline badge #}}
@@ -153,16 +158,19 @@
 </section>
 
 {{# ===== CTA SECTION ===== #}}
-<section class="hero-gradient py-20 sm:py-28 relative overflow-hidden">
+<section class="hero-gradient py-32 sm:py-40 relative overflow-hidden">
+    {{ if cta_bg_image }}
+    <div class="hero-bg-image" style="background-image: url('{{ glide:cta_bg_image width="1920" fit="crop_focal" quality="80" }}')"></div>
+    {{ /if }}
     <div class="hero-shape hero-shape-1"></div>
     <div class="hero-shape hero-shape-2"></div>
 
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-        <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-tight">
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-tight drop-shadow-lg">
             {{ cta_headline }}
-            <span class="bg-gradient-to-r from-brand-300 to-accent-400 bg-clip-text text-transparent">{{ cta_headline_highlight }}</span>
+            <span class="bg-gradient-to-r from-brand-300 to-accent-400 bg-clip-text text-transparent drop-shadow-none">{{ cta_headline_highlight }}</span>
         </h2>
-        <p class="mt-6 text-lg sm:text-xl text-white/60 max-w-2xl mx-auto">
+        <p class="mt-6 text-lg sm:text-xl text-white/70 max-w-2xl mx-auto drop-shadow-md">
             {{ cta_subtitle }}
         </p>
         <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">

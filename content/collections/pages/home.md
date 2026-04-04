@@ -61,5 +61,6 @@ cta_headline_highlight: 'Dream Car?'
 cta_subtitle: 'Visit our showroom or give us a call. Our team is ready to help you find the perfect vehicle.'
 cta_button_text: 'Browse Inventory'
 updated_by: acffaab0-a0ef-4dde-97c0-b5ee06d7afed
-updated_at: 1775243309
+updated_at: 1775303016
+cta_bg_image: car1.jpg
 ---
