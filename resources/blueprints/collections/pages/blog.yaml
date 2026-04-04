@@ -1,0 +1,34 @@
+title: Blog
+tabs:
+  hero:
+    display: Hero
+    sections:
+      -
+        display: Hero Section
+        fields:
+          -
+            handle: hero_background_image
+            field:
+              type: assets
+              display: 'Hero Background Image'
+              container: assets
+              max_files: 1
+              instructions: 'Background image shown on the right side of the hero section. Works best with dark, automotive-themed images.'
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        display: Meta
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              display: Title
+              required: true
+          -
+            handle: template
+            field:
+              type: template
+              display: Template
+              hide_partials: true

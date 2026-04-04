@@ -1,6 +1,11 @@
 {{# ===== CARS PAGE HERO ===== #}}
 <section class="hero-gradient pt-32 sm:pt-40 pb-16 sm:pb-20 relative">
     <div class="hero-shape hero-shape-1"></div>
+    {{ if hero_background_image }}
+        {{ hero_background_image }}
+            <div class="hero-bg-image" style="background-image: url('{{ url }}')"></div>
+        {{ /hero_background_image }}
+    {{ /if }}
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="max-w-2xl">
             <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-tight">

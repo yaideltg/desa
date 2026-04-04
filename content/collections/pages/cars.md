@@ -2,5 +2,6 @@
 id: page-cars
 title: 'Our Cars'
 template: cars/index
-blueprint: pages
+blueprint: cars
+hero_background_image: velocidad.jpg
 ---
