@@ -2,9 +2,7 @@
 <section class="post-hero relative pt-28 sm:pt-36 pb-14 sm:pb-20 overflow-hidden">
     {{# Featured image as background #}}
     {{ if featured_image }}
-        {{ featured_image }}
-            <div class="post-hero-image" style="background-image: url('{{ url }}');"></div>
-        {{ /featured_image }}
+        <div class="post-hero-image" style="background-image: url('{{ glide:featured_image width='1920' quality='75' format='webp' }}');"></div>
     {{ /if }}
     {{# Dark overlay for readability #}}
     <div class="post-hero-overlay"></div>

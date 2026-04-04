@@ -52,7 +52,7 @@ return [
         |
         */
 
-        'cache' => false,
+        'cache' => true,
         'cache_path' => public_path('img'),
 
         /*
@@ -67,7 +67,7 @@ return [
         */
 
         'defaults' => [
-            // 'quality' => 50,
+            'quality' => 80,
         ],
 
         /*
@@ -83,7 +83,12 @@ return [
         */
 
         'presets' => [
-            // 'small' => ['w' => 200, 'h' => 200, 'q' => 75, 'fit' => 'crop'],
+            'card' => ['w' => 600, 'h' => 450, 'q' => 75, 'fit' => 'crop_focal', 'fm' => 'webp'],
+            'card_lg' => ['w' => 800, 'h' => 600, 'q' => 80, 'fit' => 'crop_focal', 'fm' => 'webp'],
+            'hero' => ['w' => 1280, 'h' => 800, 'q' => 80, 'fit' => 'crop_focal', 'fm' => 'webp'],
+            'hero_bg' => ['w' => 1920, 'q' => 75, 'fm' => 'webp'],
+            'gallery_thumb' => ['w' => 300, 'h' => 300, 'q' => 75, 'fit' => 'crop_focal', 'fm' => 'webp'],
+            'lightbox' => ['w' => 1600, 'q' => 85, 'fm' => 'webp'],
         ],
 
         /*

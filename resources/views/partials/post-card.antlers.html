@@ -3,9 +3,16 @@
     {{# Featured image #}}
     <div class="relative aspect-[16/10] overflow-hidden bg-surface-100">
         {{ if featured_image }}
-            {{ featured_image }}
-                <img src="{{ url }}" alt="{{ alt ?? title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
-            {{ /featured_image }}
+            <img
+                src="{{ glide:featured_image width='600' height='375' fit='crop_focal' format='webp' }}"
+                srcset="{{ glide:featured_image width='400' height='250' fit='crop_focal' format='webp' }} 400w,
+                        {{ glide:featured_image width='600' height='375' fit='crop_focal' format='webp' }} 600w,
+                        {{ glide:featured_image width='800' height='500' fit='crop_focal' format='webp' }} 800w"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                alt="{{ featured_image:alt ?? title }}"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+            >
         {{ else }}
             <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-brand-50 to-brand-100">
                 <svg class="w-12 h-12 text-brand-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">

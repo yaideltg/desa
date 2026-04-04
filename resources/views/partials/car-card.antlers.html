@@ -3,9 +3,16 @@
     {{# Image #}}
     <div class="relative aspect-[4/3] overflow-hidden bg-surface-100">
         {{ if hero_image }}
-            {{ hero_image }}
-                <img src="{{ url }}" alt="{{ alt ?? title }}" class="car-card-image w-full h-full object-cover" loading="lazy">
-            {{ /hero_image }}
+            <img
+                src="{{ glide:hero_image width='600' height='450' fit='crop_focal' format='webp' }}"
+                srcset="{{ glide:hero_image width='400' height='300' fit='crop_focal' format='webp' }} 400w,
+                        {{ glide:hero_image width='600' height='450' fit='crop_focal' format='webp' }} 600w,
+                        {{ glide:hero_image width='800' height='600' fit='crop_focal' format='webp' }} 800w"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                alt="{{ hero_image:alt ?? title }}"
+                class="car-card-image w-full h-full object-cover"
+                loading="lazy"
+            >
         {{ else }}
             <div class="car-image-placeholder w-full h-full">
                 <svg class="w-16 h-16 text-surface-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
