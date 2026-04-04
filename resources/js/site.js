@@ -65,11 +65,44 @@ document.addEventListener('DOMContentLoaded', () => {
     if (images.length === 0) return;
 
     let currentIndex = 0;
+    const preloadCache = new Map();
+
+    function preloadAdjacent(index) {
+        [-1, 1, 2].forEach(offset => {
+            const i = (index + offset + images.length) % images.length;
+            const src = images[i].dataset.lightboxSrc;
+            if (!preloadCache.has(src)) {
+                const preImg = new Image();
+                preImg.src = src;
+                preloadCache.set(src, preImg);
+            }
+        });
+    }
+
+    function showImage(index) {
+        const src = images[index].dataset.lightboxSrc;
+        img.style.opacity = '0.3';
+        const cached = preloadCache.get(src);
+        if (cached && cached.complete) {
+            img.src = src;
+            img.alt = images[index].alt || '';
+            img.style.opacity = '';
+        } else {
+            const loader = new Image();
+            loader.onload = () => {
+                img.src = src;
+                img.alt = images[index].alt || '';
+                img.style.opacity = '';
+                preloadCache.set(src, loader);
+            };
+            loader.src = src;
+        }
+        preloadAdjacent(index);
+    }
 
     function open(index) {
         currentIndex = index;
-        img.src = images[currentIndex].dataset.lightboxSrc;
-        img.alt = images[currentIndex].alt || '';
+        showImage(currentIndex);
         lightbox.classList.add('open');
         lightbox.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
@@ -87,8 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function navigate(direction) {
         currentIndex = (currentIndex + direction + images.length) % images.length;
-        img.src = images[currentIndex].dataset.lightboxSrc;
-        img.alt = images[currentIndex].alt || '';
+        showImage(currentIndex);
     }
 
     images.forEach((el, i) => {
@@ -97,6 +129,16 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             open(i);
         });
+    });
+
+    // Preload the first few images on page load
+    images.slice(0, 3).forEach((el) => {
+        const src = el.dataset.lightboxSrc;
+        if (!preloadCache.has(src)) {
+            const preImg = new Image();
+            preImg.src = src;
+            preloadCache.set(src, preImg);
+        }
     });
 
     closeBtn.addEventListener('click', close);
