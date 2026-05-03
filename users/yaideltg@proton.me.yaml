@@ -1,7 +1,7 @@
 name: Yaidel
 super: true
 id: acffaab0-a0ef-4dde-97c0-b5ee06d7afed
-password_hash: $2y$12$Ur3OGNyETaiXeq6lG8m87.u59hwR0YBY7mSvIu/MapOEKNVNNSlGm
+password_hash: '$2y$12$9EqpI9o7C1eb8/YX.onAL.UAU/eLPI5y5YYNH6OnEBeZc/xh7P3HS'
 preferences:
   collections:
     pages:
