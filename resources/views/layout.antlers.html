@@ -34,7 +34,9 @@
                     {{# Desktop Navigation #}}
                     <nav class="hidden md:flex items-center gap-1">
                         {{ nav:main }}
+                            {{ if title != "Privacy Policy" && title != "Terms of Service" }}
                             <a href="{{ url }}" class="nav-link px-4 py-2 text-sm font-medium text-white/80 hover:text-white rounded-lg transition-colors {{ if is_current }} text-white {{ /if }}">{{ title }}</a>
+                            {{ /if }}
                         {{ /nav:main }}
                     </nav>
 
@@ -89,12 +91,14 @@
                 {{# Mobile nav links #}}
                 <nav class="flex flex-col p-5 gap-1">
                     {{ nav:main }}
+                        {{ if title != "Privacy Policy" && title != "Terms of Service" }}
                         <a href="{{ url }}" class="flex items-center gap-3 px-4 py-3 text-base font-medium text-white/80 hover:text-white hover:bg-white/5 rounded-xl transition-colors {{ if is_current }} text-white bg-white/5 {{ /if }}">
                             <svg class="w-5 h-5 text-brand-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
                             </svg>
                             {{ title }}
                         </a>
+                        {{ /if }}
                     {{ /nav:main }}
                 </nav>
 
@@ -123,7 +127,7 @@
         {{# ===== FOOTER ===== #}}
         <footer class="footer-gradient text-white">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-12">
 
                     {{# Brand column #}}
                     <div class="sm:col-span-2 lg:col-span-1">
@@ -148,7 +152,9 @@
                         <h4 class="text-sm font-semibold text-white uppercase tracking-wider mb-4">Quick Links</h4>
                         <ul class="space-y-3">
                             {{ nav:main }}
+                                {{ if title != "Privacy Policy" && title != "Terms of Service" }}
                                 <li><a href="{{ url }}" class="text-sm text-white/50 hover:text-white transition-colors">{{ title }}</a></li>
+                                {{ /if }}
                             {{ /nav:main }}
                         </ul>
                     </div>
@@ -160,6 +166,15 @@
                             {{ settings:services }}
                                 <li><span class="text-sm text-white/50">{{ title }}</span></li>
                             {{ /settings:services }}
+                        </ul>
+                    </div>
+
+                    {{# Legal #}}
+                    <div>
+                        <h4 class="text-sm font-semibold text-white uppercase tracking-wider mb-4">Legal</h4>
+                        <ul class="space-y-3">
+                            <li><a href="/privacy" class="text-sm text-white/50 hover:text-white transition-colors">Privacy Policy</a></li>
+                            <li><a href="/terms" class="text-sm text-white/50 hover:text-white transition-colors">Terms of Service</a></li>
                         </ul>
                     </div>
 

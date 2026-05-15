@@ -17,20 +17,9 @@ tabs:
           -
             handle: content
             field:
-              type: bard
+              type: markdown
               display: Content
-              buttons:
-                - h2
-                - h3
-                - bold
-                - italic
-                - unorderedlist
-                - orderedlist
-                - quote
-                - link
-                - image
-              container: assets
-              allow_source: true
+              instructions: 'Write legal page content in Markdown, with headings and paragraphs kept readable in the Control Panel.'
           -
             handle: template
             field:

@@ -5,3 +5,7 @@ tree:
     entry: page-cars
   -
     entry: page-blog
+  -
+    entry: page-privacy
+  -
+    entry: page-terms
