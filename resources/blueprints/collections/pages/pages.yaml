@@ -17,9 +17,47 @@ tabs:
           -
             handle: content
             field:
-              type: markdown
+              type: bard
               display: Content
-              instructions: 'Write legal page content in Markdown, with headings and paragraphs kept readable in the Control Panel.'
+              buttons:
+                - h2
+                - h3
+                - bold
+                - italic
+                - unorderedlist
+                - orderedlist
+                - quote
+                - link
+              container: assets
+              allow_source: true
+              instructions: 'Rich legal page content. Contact details are rendered from the Settings global in the legal template.'
+      -
+        display: 'Legal Page Settings'
+        fields:
+          -
+            handle: intro
+            field:
+              type: textarea
+              display: Intro
+              instructions: 'Short intro shown under the page title.'
+          -
+            handle: updated_label
+            field:
+              type: text
+              display: 'Updated Label'
+              instructions: 'Example: Last updated: May 15, 2026'
+          -
+            handle: show_global_contact
+            field:
+              type: toggle
+              display: 'Show Global Contact'
+              instructions: 'Show a Contact Us section using the email and address from Settings.'
+          -
+            handle: contact_intro
+            field:
+              type: textarea
+              display: 'Contact Intro'
+              instructions: 'Text shown before the global email and address.'
           -
             handle: template
             field:

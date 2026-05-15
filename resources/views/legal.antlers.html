@@ -25,7 +25,19 @@
             {{ if updated_label }}
             <p class="lead">{{ updated_label }}</p>
             {{ /if }}
-            {{ content | markdown }}
+            {{ content }}
+
+            {{ if show_global_contact }}
+            <h2>Contact Us</h2>
+            <p>{{ contact_intro }}</p>
+            {{ settings }}
+            <p>
+                Email: <a href="mailto:{{ email }}">{{ email }}</a><br>
+                Mailing address:<br>
+                {{ address | nl2br }}
+            </p>
+            {{ /settings }}
+            {{ /if }}
         </article>
     </div>
 </section>
