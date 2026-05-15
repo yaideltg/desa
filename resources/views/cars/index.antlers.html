@@ -7,11 +7,11 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="max-w-2xl">
             <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-tight">
-                Our
-                <span class="bg-gradient-to-r from-brand-400 to-accent-400 bg-clip-text text-transparent">Inventory</span>
+                {{ hero_heading ?? "Our" }}
+                <span class="bg-gradient-to-r from-brand-400 to-accent-400 bg-clip-text text-transparent">{{ hero_heading_highlight ?? "Inventory" }}</span>
             </h1>
             <p class="mt-4 text-lg text-white/60 leading-relaxed">
-                Browse our full collection of quality vehicles. Every car has been inspected and is ready for the road.
+                {{ hero_description ?? "Browse our full collection of quality vehicles. Every car has been inspected and is ready for the road." }}
             </p>
         </div>
     </div>

@@ -7,6 +7,24 @@ tabs:
         display: Hero Section
         fields:
           -
+            handle: hero_heading
+            field:
+              type: text
+              display: 'Hero Heading'
+              instructions: 'Text shown before the highlighted word in the main header.'
+          -
+            handle: hero_heading_highlight
+            field:
+              type: text
+              display: 'Hero Heading Highlight'
+              instructions: 'Highlighted text shown in the main header.'
+          -
+            handle: hero_description
+            field:
+              type: textarea
+              display: 'Hero Description'
+              instructions: 'Intro text shown below the main header.'
+          -
             handle: hero_background_image
             field:
               type: assets
