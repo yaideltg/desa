@@ -65,8 +65,36 @@ tabs:
                     display: Label
                     width: 50
               add_row: Add Stat
+  featured:
+    display: Featured Cars
+    sections:
+      -
+        display: 'Featured Cars Section'
+        fields:
+          -
+            handle: featured_badge
+            field:
+              type: text
+              display: Badge Text
+              instructions: 'Small label above the headline (e.g. "Featured").'
+          -
+            handle: featured_headline
+            field:
+              type: text
+              display: Headline
+          -
+            handle: featured_subtitle
+            field:
+              type: textarea
+              display: Subtitle
+          -
+            handle: featured_button_text
+            field:
+              type: text
+              display: Button Text
+              instructions: 'Text for the "View All" button below the grid.'
   features:
-    display: Features
+    display: Why Choose Us
     sections:
       -
         display: 'Why Choose Us'
@@ -126,34 +154,6 @@ tabs:
                         type: textarea
                         display: Description
                         required: true
-  featured:
-    display: Featured
-    sections:
-      -
-        display: 'Featured Cars Section'
-        fields:
-          -
-            handle: featured_badge
-            field:
-              type: text
-              display: Badge Text
-              instructions: 'Small label above the headline (e.g. "Featured").'
-          -
-            handle: featured_headline
-            field:
-              type: text
-              display: Headline
-          -
-            handle: featured_subtitle
-            field:
-              type: textarea
-              display: Subtitle
-          -
-            handle: featured_button_text
-            field:
-              type: text
-              display: Button Text
-              instructions: 'Text for the "View All" button below the grid.'
   blog:
     display: Blog
     sections:
